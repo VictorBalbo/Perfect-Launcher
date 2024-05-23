@@ -53,6 +53,10 @@ namespace Perfect_Launcher
 
         string Exe32 = "ELEMENTCLIENT.EXE";
         string Exe64 = "elementclient_64.exe";
+        
+        // Element client path in the system
+        //string elementPath = Application.StartupPath;
+        string elementPath = "C:\\The Classic Games\\The Classic PW - Mar em Furia";
 
         [DllImport("user32.dll")]
         internal static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -66,19 +70,9 @@ namespace Perfect_Launcher
             ScrollTextDefaultValue = labelGlobal.Top;
 
             // Checa se o programa está na pasta correta
-            if (!File.Exists(Application.StartupPath + "\\" + Exe64) && !File.Exists(Application.StartupPath + "\\" + Exe32))
+            if (!File.Exists(elementPath + "\\" + Exe64) && !File.Exists(elementPath + "\\" + Exe32))
             {
                 WM.ShowMessage("ElementClient.exe não foi encontrado!\nPor favor, coloque este launcher dentro da pasta \"element\" do seu PW.");
-
-                // Procura a pasta elements, e abre-a
-                char[] Disk = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-
-                foreach (char c in Disk)
-                    if (Directory.Exists(c + ":\\Level Up\\Perfect World\\element"))
-                    {
-                        Process.Start(c + ":\\Level Up\\Perfect World\\element");
-                        break;
-                    }
 
                 // Força o fechamento do programa
                 Environment.Exit(0);
@@ -250,7 +244,7 @@ namespace Perfect_Launcher
             // Criar uma linha inteira em base64 e verificar se ela já existe no arquivo,
             // se ela não existir, adiciona ela.
 
-            var caminhoArquivoAccounts = Application.StartupPath + "\\userdata\\accounts.txt";
+            var caminhoArquivoAccounts = elementPath + "\\userdata\\accounts.txt";
             var fileInfo = new FileInfo(caminhoArquivoAccounts);
 
             /* Remove o atributo de Somente Leitura */
@@ -335,9 +329,9 @@ namespace Perfect_Launcher
 
             var processStartInfo = new ProcessStartInfo
             {
-                FileName = AppDomain.CurrentDomain.BaseDirectory + (string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32) : Settings.Default.ExecutavelCustom),
+                FileName = elementPath + "\\" + (string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32) : Settings.Default.ExecutavelCustom),
                 Arguments = args,
-                WorkingDirectory = string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? (AppDomain.CurrentDomain.BaseDirectory + "x64\\") : Application.StartupPath) : Application.StartupPath,
+                WorkingDirectory = string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? (elementPath + "x64\\") : elementPath) : elementPath,
                 UseShellExecute = false,
                 CreateNoWindow = false
             };
@@ -578,6 +572,8 @@ namespace Perfect_Launcher
             // Cria a pasta de logs
             if (!Directory.Exists(Application.StartupPath + "\\Perfect Launcher\\Erros"))
                 Directory.CreateDirectory(Application.StartupPath + "\\Perfect Launcher\\Erros");
+            if (!Directory.Exists(Application.StartupPath + "\\Perfect Launcher\\Logs"))
+                Directory.CreateDirectory(Application.StartupPath + "\\Perfect Launcher\\Logs");
 
             RollGlobalMessages();
             DownloadMessages();
@@ -928,7 +924,7 @@ namespace Perfect_Launcher
             // Verifica se tem internet e se já passou 1h desde o último request pro global
             string hour = DateTime.Now.ToString("HH");
 
-            if (hour != Settings.Default.LastGlobalUpdate)
+            if (hour != Settings.Default.LastGlobalUpdate || !File.Exists(Application.StartupPath + "\\Perfect Launcher\\Global.txt"))
             {
                 // Pede um novo request, salva no bloco de notas
                 WebClient wc = new WebClient();
