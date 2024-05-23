@@ -10,4 +10,39 @@
     <FallbackCulture>pt-BR</FallbackCulture>
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="AddEditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CalcFama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CheckForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CloseAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Combo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Customizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ExeArgs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAtalhos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Global.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Manage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 </Project>

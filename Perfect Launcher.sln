@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perfect Launcher", "Perfect Launcher\Perfect Launcher.csproj", "{C2513B46-EFB1-4A76-B69A-D8F3DB294E92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Perfect Launcher", "Perfect Launcher\Perfect Launcher.csproj", "{C2513B46-EFB1-4A76-B69A-D8F3DB294E92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
