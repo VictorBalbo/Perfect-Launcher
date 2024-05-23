@@ -32,8 +32,10 @@ namespace Perfect_Launcher
         private void UpdateList()
         {
             listBox1.Items.Clear();
-            foreach (string s in Settings.Default.User)
+            foreach (string s in Settings.Default.Character)
+            {
                 listBox1.Items.Add(s);
+            }
 
             if (listBox1.Items.Count > newindex)
                 listBox1.SelectedIndex = newindex;
