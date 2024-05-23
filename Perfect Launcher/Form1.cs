@@ -331,7 +331,7 @@ namespace Perfect_Launcher
             // Argumentos que serão usados
             string args = $" startbypatcher {Settings.Default.ExtraArgs} user:{User} pwd:{Passwd} role:{Character}";
             string fileName = elementPath + "\\" +(Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32);
-            string fileNameWithClasse = $"{elementPath}\\{Exe32WithClass}".Replace("{CLASS}", "GUERREIRO");
+            string fileNameWithClasse = $"{elementPath}\\{Exe32WithClass}".Replace("{CLASS}", Classe);
             if (!string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom))
             {
                 fileName = Settings.Default.ExecutavelCustom;
