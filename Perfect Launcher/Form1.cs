@@ -51,6 +51,7 @@ namespace Perfect_Launcher
         // Bloqueia a troca de arquitetura caso algum jogo esteja aberto
         public bool bBlockArchChange = false;
 
+        string Exe32WithClass = "ELEMENTCLIENT-{CLASS}.lnk";
         string Exe32 = "ELEMENTCLIENT.EXE";
         string Exe64 = "elementclient_64.exe";
         
@@ -211,6 +212,7 @@ namespace Perfect_Launcher
             // TODO: Desfazer o hash da senha ao abrir
             string Passwd = Settings.Default.Passwd[UserId];
             string Character = Settings.Default.Character[UserId];
+            string Classe = Settings.Default.Classe[UserId];
 
             // Verifica se a conta já está aberta (só se o OnlyAdd for false)
             for (int i = 0; i < RGames.Count && !bOnlyAdd; i++)
@@ -328,13 +330,23 @@ namespace Perfect_Launcher
 
             // Argumentos que serão usados
             string args = $" startbypatcher {Settings.Default.ExtraArgs} user:{User} pwd:{Passwd} role:{Character}";
+            string fileName = elementPath + "\\" +(Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32);
+            string fileNameWithClasse = $"{elementPath}\\{Exe32WithClass}".Replace("{CLASS}", "GUERREIRO");
+            if (!string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom))
+            {
+                fileName = Settings.Default.ExecutavelCustom;
+            }
+            else if (File.Exists(fileNameWithClasse))
+            {
+                fileName = fileNameWithClasse;
+            }
 
             var processStartInfo = new ProcessStartInfo
             {
-                FileName = elementPath + "\\" + (string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32) : Settings.Default.ExecutavelCustom),
+                FileName = fileName,
                 Arguments = args,
                 WorkingDirectory = string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? (elementPath + "x64\\") : elementPath) : elementPath,
-                UseShellExecute = false,
+                UseShellExecute = true,
                 CreateNoWindow = false
             };
 
