@@ -1243,6 +1243,10 @@ namespace Perfect_Launcher
 
                 foreach (string s in Contas)
                 {
+                    if(string.IsNullOrWhiteSpace(s))
+                    {
+                        continue;
+                    }
 
                     // ¹conta² ³senha£ ¢classe¬ ªpersonagemº
                     var start = s.IndexOf("¹") + 1;
