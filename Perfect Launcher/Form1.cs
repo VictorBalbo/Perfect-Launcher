@@ -1244,7 +1244,7 @@ namespace Perfect_Launcher
                 foreach (string s in Contas)
                 {
 
-                    // ¹conta² ³senha£ ¢classe¬
+                    // ¹conta² ³senha£ ¢classe¬ ªpersonagemº
                     var start = s.IndexOf("¹") + 1;
                     var User = s.Substring(start, s.IndexOf("²") - start);
 
@@ -1252,13 +1252,16 @@ namespace Perfect_Launcher
                     if (Settings.Default.User.Contains(User))
                         continue;
 
-                    var start2 = s.IndexOf("³") + 1;
+                    var start2 = s.IndexOf("³", start) + 1;
                     var Passwd = s.Substring(start2, s.IndexOf("£") - start2);
 
                     var start3 = s.IndexOf("¢") + 1;
                     var Classe = s.Substring(start3, s.IndexOf("¬") - start3);
 
-                    m.AddUser(User, Passwd, "", Classe);
+                    var start4 = s.IndexOf("ª") + 1;
+                    var Character = s.Substring(start4, s.IndexOf("º") - start4);
+
+                    m.AddUser(User, Passwd, Character, Classe);
 
                     Contador++;
                 }
@@ -1275,7 +1278,7 @@ namespace Perfect_Launcher
         private void exportarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             // Cria um arquivo com todas as contas, senhas e classes no seguinte esquema:
-            // ¹conta² ³senha£ ¢classe¬ (cruuzeeeeeeeeeeeeeeeees)
+            // ¹conta² ³senha£ ¢classe¬ ªpersonagemº(cruuzeeeeeeeeeeeeeeeees)
             if (Settings.Default.Passwd.Count != Settings.Default.User.Count || Settings.Default.Classe.Count != Settings.Default.User.Count)
             {
                 // Se TODAS essa settings não tiverem o mesmo número, tem algo errado ai.
@@ -1283,9 +1286,11 @@ namespace Perfect_Launcher
                 return;
             }
 
-            string Tudo = "";
+            StringBuilder content = new StringBuilder();
             for (int i = 0; i < Settings.Default.User.Count; i++)
-                Tudo += "¹" + Settings.Default.User[i] + "²³" + Settings.Default.Passwd[i] + "£¢" + Settings.Default.Classe[i] + "¬\n";
+            {
+                content.AppendLine($"¹{Settings.Default.User[i]}²³{Settings.Default.Passwd[i]}£¢{Settings.Default.Classe[i]}¬ª{Settings.Default.Character[i]}º");
+            }
 
             // Salva tudo
             SaveFileDialog sd = new SaveFileDialog();
@@ -1295,7 +1300,7 @@ namespace Perfect_Launcher
             sd.ValidateNames = true;
 
             if (sd.ShowDialog() == DialogResult.OK)
-                File.WriteAllText(sd.FileName, Tudo);
+                File.WriteAllText(sd.FileName, content.ToString());
         }
 
         private void button7_Click(object sender, EventArgs e)
