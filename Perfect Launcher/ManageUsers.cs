@@ -11,7 +11,7 @@ namespace Perfect_Launcher
     {
         WarningMessages WM = new WarningMessages();
 
-        public bool AddUser(string User, string Passwd, string Classe)
+        public bool AddUser(string User, string Passwd, string Character, string Classe)
         {
             // Checa se o user e a senha são válidos
             if (User == "" || Passwd == "")
@@ -34,6 +34,8 @@ namespace Perfect_Launcher
             Settings.Default.User.Add(User);
             // TODO: Adicionar um salted hash antes de salvar a senha
             Settings.Default.Passwd.Add(Passwd);
+            // Adiciona o personagem
+            Settings.Default.Character.Add(Character);
             // Adiciona a classe
             Settings.Default.Classe.Add(Classe);
 
@@ -47,6 +49,7 @@ namespace Perfect_Launcher
                 // Remove das settings
                 Settings.Default.User.RemoveAt(UserId);
                 Settings.Default.Passwd.RemoveAt(UserId);
+                Settings.Default.Character.RemoveAt(UserId);
                 Settings.Default.Classe.RemoveAt(UserId);
                 return true;
             }

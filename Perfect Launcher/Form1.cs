@@ -91,6 +91,7 @@ namespace Perfect_Launcher
                 // Limpa as stringsCollection
                 Settings.Default.User.Clear();
                 Settings.Default.Passwd.Clear();
+                Settings.Default.Character.Clear();
                 Settings.Default.Classe.Clear();
                 Settings.Default.ComboQueue.Clear();
                 Settings.Default.UsersBeforeClosing.Clear();
@@ -133,8 +134,8 @@ namespace Perfect_Launcher
             usersComboBox.Items.Clear();
 
             // Carrega os usuários salvos no combobox (caso haja algum)
-            if (Settings.Default.User.Count > 0)
-                foreach (string s in Settings.Default.User)
+            if (Settings.Default.Character.Count > 0)
+                foreach (string s in Settings.Default.Character)
                 {
                     usersComboBox.Items.Add(s);
                     toolStripComboBox2.Items.Add(s);
@@ -209,6 +210,7 @@ namespace Perfect_Launcher
             string User = Settings.Default.User[UserId];
             // TODO: Desfazer o hash da senha ao abrir
             string Passwd = Settings.Default.Passwd[UserId];
+            string Character = Settings.Default.Character[UserId];
 
             // Verifica se a conta já está aberta (só se o OnlyAdd for false)
             for (int i = 0; i < RGames.Count && !bOnlyAdd; i++)
@@ -325,7 +327,7 @@ namespace Perfect_Launcher
             fileInfo.Attributes |= FileAttributes.ReadOnly;
 
             // Argumentos que serão usados
-            string args = " startbypatcher " + Settings.Default.ExtraArgs + " user:" + User + " pwd:" + Passwd;
+            string args = $" startbypatcher {Settings.Default.ExtraArgs} user:{User} pwd:{Passwd} role:{Character}";
 
             var processStartInfo = new ProcessStartInfo
             {
@@ -1244,7 +1246,7 @@ namespace Perfect_Launcher
                     var start3 = s.IndexOf("¢") + 1;
                     var Classe = s.Substring(start3, s.IndexOf("¬") - start3);
 
-                    m.AddUser(User, Passwd, Classe);
+                    m.AddUser(User, Passwd, "", Classe);
 
                     Contador++;
                 }

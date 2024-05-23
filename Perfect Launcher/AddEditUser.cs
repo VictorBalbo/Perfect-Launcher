@@ -40,6 +40,7 @@ namespace Perfect_Launcher
                 // Exibe as informações da conta carregada
                 textBox1.Text = Settings.Default.User[Id];
                 textBox2.Text = Settings.Default.Passwd[Id];
+                textBox4.Text = Settings.Default.Character[Id];
 
                 // Verifica se a descrição bate com alguma da combobox
                 if (comboBox1.Items.Contains(Settings.Default.Classe[Id]))
@@ -69,7 +70,7 @@ namespace Perfect_Launcher
             if (!bEditar)
             {
                 ManageUsers m = new ManageUsers();
-                bool bAdded = m.AddUser(textBox1.Text, textBox2.Text, checkBox1.Checked ? textBox3.Text : comboBox1.SelectedItem.ToString());
+                bool bAdded = m.AddUser(textBox1.Text, textBox2.Text, textBox4.Text, checkBox1.Checked ? textBox3.Text : comboBox1.SelectedItem.ToString());
 
                 if (bAdded)
                 {
@@ -81,6 +82,7 @@ namespace Perfect_Launcher
             {
                 Settings.Default.User[Id] = textBox1.Text;
                 Settings.Default.Passwd[Id] = textBox2.Text;
+                Settings.Default.Character[Id] = textBox4.Text;
                 Settings.Default.Classe[Id] = checkBox1.Checked ? textBox3.Text : comboBox1.SelectedItem.ToString();
 
                 f1.RefreshUsernamesOnComboBox(Id);

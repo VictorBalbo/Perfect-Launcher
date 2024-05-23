@@ -80,28 +80,33 @@
   &lt;string /&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="DailyCheckups" Type="System.Boolean[]" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfBoolean xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-  &lt;boolean&gt;false&lt;/boolean&gt;
-&lt;/ArrayOfBoolean&gt;</Value>
-    </Setting>
     <Setting Name="UsersBeforeClosing" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" /&gt;</Value>
     </Setting>
     <Setting Name="ExecutavelCustom" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="DailyCheckups" Type="System.Boolean[]" Scope="User">
+      <Value Profile="(Default)">
+                    &lt;ArrayOfBoolean xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                        &lt;boolean&gt;false&lt;/boolean&gt;
+                    &lt;/ArrayOfBoolean&gt;
+                </Value>
+    </Setting>
+    <Setting Name="Character" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" /&gt;</Value>
     </Setting>
   </Settings>
 </SettingsFile>
