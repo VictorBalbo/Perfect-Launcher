@@ -332,9 +332,14 @@ namespace Perfect_Launcher
             string args = $" startbypatcher {Settings.Default.ExtraArgs} user:{User} pwd:{Passwd} role:{Character}";
             string fileName = elementPath + "\\" +(Settings.Default.bUse64 ? $"x64\\{Exe64}" : Exe32);
             string fileNameWithClasse = $"{elementPath}\\{Exe32WithClass}".Replace("{CLASS}", Classe);
+            string fileNameWithCharacter = $"{elementPath}\\{Exe32WithClass}".Replace("{CLASS}", Character);
             if (!string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom))
             {
                 fileName = Settings.Default.ExecutavelCustom;
+            }
+            else if (File.Exists(fileNameWithCharacter))
+            {
+                fileName = fileNameWithCharacter;
             }
             else if (File.Exists(fileNameWithClasse))
             {
