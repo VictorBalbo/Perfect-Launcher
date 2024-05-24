@@ -8,7 +8,7 @@ namespace Perfect_Launcher
 {
     public class RunningGames
     {
-        public string User;
+        public string Character;
         public int ProcessId = -1;
     }
 }

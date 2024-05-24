@@ -219,7 +219,7 @@ namespace Perfect_Launcher
             {
                 try
                 {
-                    if (RGames[i].User == User && !IgnorarAbertas)
+                    if (RGames[i].Character == User && !IgnorarAbertas)
                     {
                         DialogResult dr = WM.ShowMessage("A conta '" + User + "' já está aberta.\nDeseja abri-la mesmo assim?", 1, true);
                         if (dr != DialogResult.Yes)
@@ -357,7 +357,7 @@ namespace Perfect_Launcher
             else
                 rg.ProcessId = ProcessId;
 
-            rg.User = User;
+            rg.Character = Character;
 
             // Adiciona a classe para a lista (o crashwatch ficará responsável por remove-lá depois)
             RGames.Add(rg);
@@ -700,7 +700,7 @@ namespace Perfect_Launcher
                     if (WasReportBug())
                     {
                         // Salva o user
-                        string User = RGames[i].User;
+                        string User = RGames[i].Character;
 
                         DialogResult dr = WM.ShowMessage("A conta '" + User + "' crashou.\nDeseja reabri-la?", 1, true);
                         if (dr == DialogResult.Yes)
@@ -816,7 +816,7 @@ namespace Perfect_Launcher
                     // Remove da lista de jogos abertos, caso esteja nela
                     for (int i = 0; RGames.Count > 0 && i < RGames.Count; i++)
                     {
-                        if (RGames[i].User == User)
+                        if (RGames[i].Character == User)
                         {
                             RGames.RemoveAt(i);
                             i--;
@@ -858,7 +858,7 @@ namespace Perfect_Launcher
                 {
                     for (int i = 0; i < RGames.Count; i++)
                     {
-                        string User = RGames[i].User;
+                        string User = RGames[i].Character;
                         int pId = RGames[i].ProcessId;
 
                         // Adiciona neste formato {User}[ProcessID]

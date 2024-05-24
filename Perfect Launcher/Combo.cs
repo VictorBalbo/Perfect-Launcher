@@ -478,7 +478,7 @@ namespace Perfect_Launcher
                 foreach (RunningGames rg in RGames)
                     try
                     {
-                        if (rg.User == Settings.Default.User[IndexQueue[i]])
+                        if (rg.Character == Settings.Default.User[IndexQueue[i]])
                         {
                             ProcessQueue.Add(Process.GetProcessById(rg.ProcessId));
                             break;
@@ -534,7 +534,7 @@ namespace Perfect_Launcher
             foreach (RunningGames rg in RGames)
             {
                 Contador++;
-                listBox1.Items.Add(rg.User);
+                listBox1.Items.Add(rg.Character);
             }
             labelAbertas.Text = "CONTAS ABERTAS (" + Contador.ToString() + ")";
         }
@@ -893,7 +893,7 @@ namespace Perfect_Launcher
                     // Pega o processo direto do runningGames
                     foreach (RunningGames rg in RGames)
                     {
-                        if (rg.User == listBox1.SelectedItem.ToString())
+                        if (rg.Character == listBox1.SelectedItem.ToString())
                         {
                             BringToTop(Process.GetProcessById(rg.ProcessId));
 

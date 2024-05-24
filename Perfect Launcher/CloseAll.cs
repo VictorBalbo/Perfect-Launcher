@@ -28,7 +28,7 @@ namespace Perfect_Launcher
 
             foreach (RunningGames rg in RGames)
             {
-                comboBox1.Items.Add(rg.User);
+                comboBox1.Items.Add(rg.Character);
             }
         }
 
@@ -40,7 +40,7 @@ namespace Perfect_Launcher
             {
                 try
                 {
-                    if (rg.User != naoFechar)
+                    if (rg.Character != naoFechar)
                     {
                         Process p = Process.GetProcessById(rg.ProcessId);
                         p.Kill();
