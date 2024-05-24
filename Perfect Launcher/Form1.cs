@@ -345,9 +345,7 @@ namespace Perfect_Launcher
             {
                 FileName = fileName,
                 Arguments = args,
-                WorkingDirectory = string.IsNullOrWhiteSpace(Settings.Default.ExecutavelCustom) ? (Settings.Default.bUse64 ? (elementPath + "x64\\") : elementPath) : elementPath,
                 UseShellExecute = true,
-                CreateNoWindow = false
             };
 
             // Cria uma classe temporária para ser armazenada na lista
@@ -1162,8 +1160,15 @@ namespace Perfect_Launcher
 
             try
             {
-                Process.Start(Application.StartupPath + "\\Perfect Launcher\\Logs.txt");
-            }catch(Exception x)
+                var processStartInfo = new ProcessStartInfo
+                {
+                    FileName = Application.StartupPath + "\\Perfect Launcher\\Logs.txt",
+                    UseShellExecute = true,
+                };
+
+                Process.Start(processStartInfo);
+            }
+            catch(Exception x)
             {
                 WM.ShowMessage(x.ToString(), 3);
             }
