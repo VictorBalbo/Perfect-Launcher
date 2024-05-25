@@ -427,8 +427,8 @@ namespace Perfect_Launcher
             foreach (string s in listBox1.SelectedItems)
             {
                 // Só adiciona caso o item ainda não exista na lista
-                if (!IndexQueue.Contains(Settings.Default.User.IndexOf(s)))
-                    IndexQueue.Add(Settings.Default.User.IndexOf(s));
+                if (!IndexQueue.Contains(Settings.Default.Character.IndexOf(s)))
+                    IndexQueue.Add(Settings.Default.Character.IndexOf(s));
             }
 
             // Atualiza a listbox2
@@ -448,7 +448,7 @@ namespace Perfect_Launcher
             {
                 try
                 {
-                    if (listBox1.Items.Contains(Settings.Default.User[IndexQueue[i]]))
+                    if (listBox1.Items.Contains(Settings.Default.Character[IndexQueue[i]]))
                     {
                         int tempOrdem = i + 1;
                         if (tempOrdem >= 10)
@@ -478,7 +478,7 @@ namespace Perfect_Launcher
                 foreach (RunningGames rg in RGames)
                     try
                     {
-                        if (rg.Character == Settings.Default.User[IndexQueue[i]])
+                        if (rg.Character == Settings.Default.Character[IndexQueue[i]])
                         {
                             ProcessQueue.Add(Process.GetProcessById(rg.ProcessId));
                             break;

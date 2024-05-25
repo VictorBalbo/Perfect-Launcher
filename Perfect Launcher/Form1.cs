@@ -372,11 +372,11 @@ namespace Perfect_Launcher
 
             // Verifica se a conta aberta já está presente na lista de recentes
             // (caso esteja, remove-a)
-            if (OpenRecently.Contains(User))
-                OpenRecently.Remove(User);
+            if (OpenRecently.Contains(Character))
+                OpenRecently.Remove(Character);
 
             // Seta como uma conta aberta recentemente
-            OpenRecently.Add(User);
+            OpenRecently.Add(Character);
 
             // Caso tenha mais de 5 contas recentes, remove a primeira
             if (OpenRecently.Count > 5)
@@ -397,7 +397,7 @@ namespace Perfect_Launcher
             UpdateArchChecks();
 
             // Salva a conta aberta no log
-            WriteToLog(User);
+            WriteToLog(Character);
         }
 
         private void WriteToLog(string User)
@@ -998,12 +998,12 @@ namespace Perfect_Launcher
             if (OpenRecently.Count <= 0)
                 return;
 
-            if (!Settings.Default.User.Contains(OpenRecently[0]))
+            if (!Settings.Default.Character.Contains(OpenRecently[0]))
             {
                 WM.ShowMessage("A conta '" + OpenRecently[0] + "' não pôde ser encontrada.", 3);
                 return;
             }
-            int Index = Settings.Default.User.IndexOf(OpenRecently[0]);
+            int Index = Settings.Default.Character.IndexOf(OpenRecently[0]);
 
             OpenGame(Index);
         }
@@ -1013,12 +1013,12 @@ namespace Perfect_Launcher
             if (OpenRecently.Count <= 1)
                 return;
 
-            if (!Settings.Default.User.Contains(OpenRecently[1]))
+            if (!Settings.Default.Character.Contains(OpenRecently[1]))
             {
                 WM.ShowMessage("A conta '" + OpenRecently[1] + "' não pôde ser encontrada.", 3);
                 return;
             }
-            int Index = Settings.Default.User.IndexOf(OpenRecently[1]);
+            int Index = Settings.Default.Character.IndexOf(OpenRecently[1]);
 
             OpenGame(Index);
         }
@@ -1028,12 +1028,12 @@ namespace Perfect_Launcher
             if (OpenRecently.Count <= 2)
                 return;
 
-            if (!Settings.Default.User.Contains(OpenRecently[2]))
+            if (!Settings.Default.Character.Contains(OpenRecently[2]))
             {
                 WM.ShowMessage("A conta '" + OpenRecently[2] + "' não pôde ser encontrada.", 3);
                 return;
             }
-            int Index = Settings.Default.User.IndexOf(OpenRecently[2]);
+            int Index = Settings.Default.Character.IndexOf(OpenRecently[2]);
 
             OpenGame(Index);
         }
@@ -1043,12 +1043,12 @@ namespace Perfect_Launcher
             if (OpenRecently.Count <= 3)
                 return;
 
-            if (!Settings.Default.User.Contains(OpenRecently[3]))
+            if (!Settings.Default.Character.Contains(OpenRecently[3]))
             {
                 WM.ShowMessage("A conta '" + OpenRecently[3] + "' não pôde ser encontrada.", 3);
                 return;
             }
-            int Index = Settings.Default.User.IndexOf(OpenRecently[3]);
+            int Index = Settings.Default.Character.IndexOf(OpenRecently[3]);
 
             OpenGame(Index);
         }
@@ -1058,12 +1058,12 @@ namespace Perfect_Launcher
             if (OpenRecently.Count <= 4)
                 return;
 
-            if (!Settings.Default.User.Contains(OpenRecently[4]))
+            if (!Settings.Default.Character.Contains(OpenRecently[4]))
             {
                 WM.ShowMessage("A conta '" + OpenRecently[4] + "' não pôde ser encontrada.", 3);
                 return;
             }
-            int Index = Settings.Default.User.IndexOf(OpenRecently[4]);
+            int Index = Settings.Default.Character.IndexOf(OpenRecently[4]);
 
             OpenGame(Index);
         }
@@ -1209,7 +1209,7 @@ namespace Perfect_Launcher
         {
             if (toolStripComboBox2.SelectedIndex > 0)
             {
-                OpenGame(Settings.Default.User.IndexOf(toolStripComboBox2.SelectedItem.ToString()));
+                OpenGame(Settings.Default.Character.IndexOf(toolStripComboBox2.SelectedItem.ToString()));
 
                 // Volta pro selectedIndex 0 e fecha o menu
                 toolStripComboBox2.SelectedIndex = 0;
