@@ -719,7 +719,7 @@ namespace Perfect_Launcher
                                 p.Kill();
 
                             // Abre o jogo novamente
-                            OpenGame(Settings.Default.User.IndexOf(User));
+                            OpenGame(Settings.Default.Character.IndexOf(User));
                         }
                         else
                         {
